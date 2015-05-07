@@ -47,7 +47,7 @@ namespace SocialApp
             var scope = "r_basicprofile";
 
             var redirectUri = redirecturi;
-            var loginUrl = "https://www.linkedin.com/uas/oauth2/authorization?response_type=code&client_id=" + ClientId + "&redirect_uri=" + redirectUri + "&state=DCEeFWf45A53sdfKef424&scope=" + scope;
+            var loginUrl = "https://www.linkedin.com/uas/oauth2/authorization?response_type=code&client_id=" + ClientId + "&redirect_uri=" + redirectUri + "&state=DCEeFWf45A53sdfKef424&scope=" + scope; //state is random string that you need to generate
 
             Uri startUri = new Uri(loginUrl);
             Uri endUri = new Uri(redirectUri, UriKind.Absolute);
