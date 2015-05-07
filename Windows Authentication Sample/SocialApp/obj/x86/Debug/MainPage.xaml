@@ -1,0 +1,48 @@
+﻿<Page
+    x:Class="SocialApp.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SocialApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <SplitView x:ConnectionId='1' IsPaneOpen="{Binding IsChecked, ElementName=Hamburger}"                                   Grid.Row="2" OpenPaneLength="200" DisplayMode="CompactInline" Name="mainPane"  > 
+            <SplitView.Pane>
+            <StackPanel Background="#3498db">
+                <ToggleButton x:ConnectionId='2' x:Name="Hamburger" Background="#3498db" Width="50">
+                    <FontIcon Foreground="White" FontFamily="Segoe MDL2 Assets" Glyph="&#xE700;" Margin="0,10,0,0"/>
+                </ToggleButton>
+                <StackPanel Orientation="Horizontal">
+                    <Button x:ConnectionId='5' Foreground="White" Background="#2980b9" Width="50"                     >F</Button>
+                    <Button x:ConnectionId='6' Foreground="White" Background="#2980b9" Width="150" HorizontalContentAlignment="Left"                     >Facebook Account</Button>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <Button x:ConnectionId='3' Foreground="White" Background="#2980b9" Width="50"                       >in</Button>
+                    <Button x:ConnectionId='4' Foreground="White" Background="#2980b9" Width="150" HorizontalContentAlignment="Left"                       >Linkedin Account</Button>
+                </StackPanel>
+            </StackPanel>
+            </SplitView.Pane>
+        <SplitView.Content>
+            <Frame x:ConnectionId='7' Name="fr1" >
+                <Grid Background="#2980b9">
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <StackPanel.Resources>
+                            <Storyboard x:ConnectionId='8' x:Name="animationIn" Duration="10000">
+                                <PopInThemeAnimation TargetName="txtUserName" ></PopInThemeAnimation>
+                                <PopInThemeAnimation TargetName="imgUser" ></PopInThemeAnimation>
+                            </Storyboard>
+                        </StackPanel.Resources>
+                        <Image x:ConnectionId='9' Name="imgUser" Width="100" Height="100" Visibility="Collapsed"></Image>
+                        <TextBlock x:ConnectionId='10'  Foreground="White" FontSize="30" Name="txtUserName">Hi, User</TextBlock>
+                    </StackPanel>
+                </Grid>
+            </Frame>
+            
+        </SplitView.Content>
+        </SplitView>
+   
+    
+</Page>
+
