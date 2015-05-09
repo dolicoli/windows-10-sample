@@ -1,0 +1,73 @@
+﻿<Page
+    x:Class="Guidea.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Guidea"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Resources>
+       
+        <DataTemplate x:Key="ItemTemplate">
+
+            <Grid x:Name="test" Margin="10" Background="Blue" HorizontalAlignment="Center" VerticalAlignment="Center" Width="400" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Border Name="borderImage"  Background="{StaticResource ListViewItemPlaceholderBackgroundThemeBrush}" Width="110" Height="110">
+                    <Image Name="imageImage" Height="110" Width="110" Source="{Binding imageUrl}" />
+                </Border>
+                <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                    <TextBlock Text="{Binding author}" Style="{StaticResource TitleTextBlockStyle}"/>
+                    <TextBlock Text="{Binding category}" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="NoWrap"/>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="ItemTemplate2">
+
+            <Grid x:Name="test" Margin="10" Background="Blue" HorizontalAlignment="Center" VerticalAlignment="Center" Width="400" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Border Name="borderImage"  Background="{StaticResource ListViewItemPlaceholderBackgroundThemeBrush}" Width="200" Height="200">
+                    <Image Name="imageImage" Height="200" Width="200" Source="{Binding imageUrl}" />
+                </Border>
+                <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                    <TextBlock Text="{Binding author}" Style="{StaticResource TitleTextBlockStyle}"/>
+                    <TextBlock Text="{Binding category}" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="NoWrap"/>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" d:DataContext="{d:DesignData /SampleData/ListItemSampleData.xaml}">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="dasdf">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="600" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter  Target="listView.ItemTemplate" Value="{StaticResource ItemTemplate2}"/>
+                    </VisualState.Setters>
+
+                </VisualState>
+                <VisualState x:Name="dsaasd">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter  Target="listView.ItemTemplate" Value="{StaticResource ItemTemplate}"/>
+                    </VisualState.Setters>
+
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+          
+        
+       
+        <GridView x:Name="listView" ItemTemplate="{StaticResource ItemTemplate}" ItemsSource="{Binding items}" Margin="19,12,19,0" VerticalAlignment="Top"/>
+    </Grid>
+</Page>
